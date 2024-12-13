@@ -1,0 +1,10 @@
+<h1>User Profile</h1>
+<div *ngIf="user; else notFound">
+  <p><strong>Name:</strong> {{ user.name }}</p>
+  <p><strong>Surname:</strong> {{ user.surname }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>ID:</strong> {{ user.id }}</p>
+</div>
+<ng-template #notFound>
+  <p>User not found!</p>
+</ng-template>

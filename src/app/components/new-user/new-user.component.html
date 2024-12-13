@@ -1,0 +1,66 @@
+<h1>Create New User</h1>
+<form
+  [formGroup]="userForm"
+  (ngSubmit)="onSubmit()"
+  style="max-width: 400px; margin: 0 auto;"
+>
+  <div style="margin-bottom: 1rem;">
+    <label for="name" style="display: block; font-weight: bold;">Name</label>
+    <input
+      id="name"
+      type="text"
+      formControlName="name"
+      style="width: 100%; padding: 8px; box-sizing: border-box;"
+      required
+    />
+  </div>
+
+  <div style="margin-bottom: 1rem;">
+    <label for="surname" style="display: block; font-weight: bold;"
+      >Surname</label
+    >
+    <input
+      id="surname"
+      type="text"
+      formControlName="surname"
+      style="width: 100%; padding: 8px; box-sizing: border-box;"
+      required
+    />
+  </div>
+
+  <div style="margin-bottom: 1rem;">
+    <label for="email" style="display: block; font-weight: bold;">Email</label>
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+      style="width: 100%; padding: 8px; box-sizing: border-box;"
+      required
+    />
+  </div>
+
+  <div style="margin-bottom: 1rem;">
+    <label for="id" style="display: block; font-weight: bold;">Id</label>
+    <input
+      id="id"
+      type="id"
+      formControlName="id"
+      style="width: 100%; padding: 8px; box-sizing: border-box;"
+      required
+    />
+  </div>
+
+  <button
+    type="submit"
+    style="
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    "
+  >
+    Create User
+  </button>
+</form>

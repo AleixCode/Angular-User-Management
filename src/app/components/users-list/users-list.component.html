@@ -1,0 +1,78 @@
+<h1>Users List</h1>
+
+<app-file-upload />
+
+<div style="margin-bottom: 1rem;">
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    (input)="onSearchChange()"
+    placeholder="Search users..."
+    style="width: 100%; padding: 8px; box-sizing: border-box;"
+  />
+  <button (click)="exportToExcel()" style="padding: 8px 12px; cursor: pointer;">
+    Download Excel
+  </button>
+  <button
+    (click)="exportToPDF()"
+    style="padding: 8px 12px; cursor: pointer; margin-left: 5px"
+  >
+    Download PDF
+  </button>
+  <button
+    (click)="exportToJSON()"
+    style="padding: 8px 12px; cursor: pointer; margin-left: 5px"
+  >
+    Download JSON
+  </button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th (click)="sortTable('name')" style="cursor: pointer;">
+        Name
+        <span *ngIf="currentSortColumn === 'name'">
+          {{ isSortAscending ? '↑' : '↓' }}
+        </span>
+      </th>
+      <th (click)="sortTable('surname')" style="cursor: pointer;">
+        Surname
+        <span *ngIf="currentSortColumn === 'surname'">
+          {{ isSortAscending ? '↑' : '↓' }}
+        </span>
+      </th>
+      <th (click)="sortTable('email')" style="cursor: pointer;">
+        Email
+        <span *ngIf="currentSortColumn === 'email'">
+          {{ isSortAscending ? '↑' : '↓' }}
+        </span>
+      </th>
+      <th (click)="sortTable('id')" style="cursor: pointer;">
+        ID
+        <span *ngIf="currentSortColumn === 'id'">
+          {{ isSortAscending ? '↑' : '↓' }}
+        </span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of paginatedUsers" (click)="navigateToUser(user.id)">
+      <td>{{ user.name }}</td>
+      <td>{{ user.surname }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.id }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div style="margin-top: 1rem; text-align: center;">
+  <button
+    *ngFor="let page of [].constructor(totalPages); let i = index"
+    (click)="goToPage(i + 1)"
+    [disabled]="currentPage === i + 1"
+    style="margin: 0 5px; padding: 5px 10px; cursor: pointer;"
+  >
+    {{ i + 1 }}
+  </button>
+</div>
